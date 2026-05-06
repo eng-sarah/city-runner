@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Body-Movement 3D Runner</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Three.js -->
+    <script src="libs/three.min.js"></script>
+
+    <!-- MediaPipe -->
+    <script src="libs/camera_utils.js"></script>
+    <script src="libs/control_utils.js"></script>
+    <script src="libs/drawing_utils.js"></script>
+    <script src="libs/pose/pose.js"></script>
+</head>
+<body>
+
+    <!-- 3D Game Canvas -->
+    <div id="game-container"></div>
+
+    <!-- UI Overlay -->
+    <div id="ui-layer">
+        <div id="hud">
+            <div class="score-board">Score: <span id="score">0</span></div>
+            <div class="speed-board">Speed: <span id="speed">1.0</span>x</div>
+            <div class="lives-board">Lives: <span id="lives">3</span></div>
+        </div>
+
+        <div id="start-screen" class="screen active">
+            <h1>NEON RUNNER</h1>
+            <p>Body Movement Controlled</p>
+            <div class="instructions">
+                <div class="instruction"><span class="icon">🏃</span> Jog in place to run forward & speed up</div>
+                <div class="instruction"><span class="icon">⬅️➡️</span> Lean left/right to change lanes</div>
+                <div class="instruction"><span class="icon">⬆️</span> Jump to clear hurdles</div>
+                <div class="instruction"><span class="icon">⬇️</span> Squat to slide under lasers</div>
+            </div>
+            <button id="start-btn">INITIALIZING CAMERA...</button>
+        </div>
+
+        <div id="game-over-screen" class="screen">
+            <h1>SYSTEM FAILURE</h1>
+            <p>Final Score: <span id="final-score">0</span></p>
+            <button id="restart-btn">REBOOT SYSTEM</button>
+        </div>
+    </div>
+
+    <!-- Camera Feed and Skeleton Tracking -->
+    <div id="camera-container">
+        <video id="input_video" autoplay playsinline></video>
+        <canvas id="output_canvas"></canvas>
+    </div>
+
+    <script src="pose.js"></script>
+    <script src="game.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
